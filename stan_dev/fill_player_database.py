@@ -139,6 +139,7 @@ def get_weekly_fantasy_points(wr, weeks):
 
 def fetch_season_data(wrs):
     """
+    Only call this if you intend to populate DB
     """
     player_htmls = os.listdir("player_htmls")
     skipped = []
@@ -184,14 +185,14 @@ def fetch_season_data(wrs):
         
 
 
-make_initial_entry()
+# make_initial_entry()
 wrs = read_file("wr_full_year.csv")
 fetch_season_data(wrs)
 # special_list = ["Mike Williams"]
-with con:
-    data = con.execute("SELECT * FROM WR_WEEKLY")
-    for row in data:
-        print(row)
+# with con:
+#     data = con.execute("SELECT * FROM WR_WEEKLY")
+#     for row in data:
+#         print(row)
     
 
 

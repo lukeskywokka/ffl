@@ -37,7 +37,7 @@ print(f"points per week = {starters/16}")
 # John's Superflex superteam: qb, 2rb, 2wr, te, wt, wrt, wrt, qwrt, d, k
 superflex_john = ["Jonathan Taylor", "Najee Harris", "Justin Jefferson", "Matthew Stafford", "Cooper Kupp", "Kirk Cousins", "Ja'Marr Chase", "Deebo Samuel", "Mark Andrews", "Jaylen Waddle", ]
 
-sys.exit(1)
+#sys.exit(1)
 
 
 
