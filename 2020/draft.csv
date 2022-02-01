@@ -57,9 +57,8 @@ pick, player, salary
 56,Calvin Ridley (Atl - WR),18
 57,Adam Thielen (Min - WR),25
 58,Darren Waller (LV - TE),11
-59,San Francisco (SF - DEF),11
 60,Raheem Mostert (SF - RB),23
-61,Melvin Gordon III (Den - RB),19
+61,Melvin Gordon (Den - RB),19
 62,Cam Akers (LAR - RB),12
 63,Tyler Higbee (LAR - TE),8
 64,Sterling Shepard (NYG - WR),6
@@ -73,7 +72,6 @@ pick, player, salary
 72,Tyler Lockett (Sea - WR),9
 73,Leonard Fournette (TB - RB),23
 74,Tarik Cohen (Chi - RB),7
-75,Baltimore (Bal - DEF),4
 76,Julian Edelman (NE - WR),7
 77,Danny Amendola (Hou - WR),1
 78,Marlon Mack (Ind - RB),7
@@ -81,23 +79,19 @@ pick, player, salary
 80,Keenan Allen (LAC - WR),9
 81,A.J. Brown (Ten - WR),18
 82,Cooper Kupp (LAR - WR),14
-83,New England (NE - DEF),4
 84,DK Metcalf (Sea - WR),22
 85,Stefon Diggs (Buf - WR),9
 86,Kareem Hunt (Cle - RB),6
-87,Pittsburgh (Pit - DEF),3
 88,Jimmy Garoppolo (SF - QB),4
 89,T.J. Hockenson (Det - TE),5
 90,Cam Newton (Car - QB),4
 91,J.K. Dobbins (Bal - RB),6
-92,Buffalo (Buf - DEF),1
 93,Rob Gronkowski (TB - TE),4
 94,Matt Ryan (Atl - QB),5
 95,Courtland Sutton (Den - WR),10
 96,DeVante Parker (Mia - WR),11
 97,Philip Rivers (Ind - QB),2
 98,A.J. Green (Ari - WR),6
-99,Chicago (Chi - DEF),2
 100,Jared Goff (Det - QB),4
 101,Phillip Lindsay (Mia - RB),8
 102,Jarvis Landry (Cle - WR),8
@@ -105,13 +99,11 @@ pick, player, salary
 104,Jonnu Smith (NE - TE),2
 105,Hunter Henry (NE - TE),5
 106,Deebo Samuel (SF - WR),4
-107,Harrison Butker (KC - K),1
 108,Devin Singletary (Buf - RB),7
 109,James White (NE - RB),5
 110,Jamison Crowder (NYJ - WR),4
-111,Justin Tucker (Bal - K),2
 112,Michael Gallup (Dal - WR),6
-113,Marvin Jones Jr (Jax - WR),4
+113,Marvin Jones (Jax - WR),4
 114,Aaron Rodgers (GB - QB),4
 115,Jerry Jeudy (Den - WR),2
 116,Zack Moss (Buf - RB),3
@@ -121,22 +113,16 @@ pick, player, salary
 120,Jared Cook (LAC - TE),2
 121,Sony Michel (LAR - RB),1
 122,Evan Engram (NYG - TE),3
-123,Kansas City (KC - DEF),1
 124,Tyler Boyd (Cin - WR),4
 125,Marvin Hall (Atl - WR),1
 126,Hayden Hurst (Atl - TE),1
-127,Wil Lutz (NO - K),1
-128,Brandon McManus (Den - K),1
-129,Robbie Gould (SF - K),2
 130,Baker Mayfield (Cle - QB),5
 131,Ben Roethlisberger (Pit - QB),1
-132,Will Fuller V (Mia - WR),1
+132,Will Fuller (Mia - WR),1
 133,Derek Carr (LV - QB),1
 134,Daniel Jones (NYG - QB),1
-135,Greg Zuerlein (Dal - K),1
 136,Ke'Shawn Vaughn (TB - RB),1
 137,Kerryon Johnson (Phi - RB),2
-138,Los Angeles (LAR - DEF),2
 139,Diontae Johnson (Pit - WR),1
 140,Mike Gesicki (Mia - TE),1
 141,Damien Harris (NE - RB),1
@@ -151,55 +137,44 @@ pick, player, salary
 150,Alexander Mattison (Min - RB),1
 151,Brandon Aiyuk (SF - WR),1
 152,Chase Edmonds (Ari - RB),5
-153,Minnesota (Min - DEF),1
 154,Latavius Murray (Bal - RB),2
 155,Brandin Cooks (Hou - WR),2
 156,Adrian Peterson (Sea - RB),1
 157,Christian Kirk (Ari - WR),1
 158,Patrick Laird (Mia - RB),1
-159,New Orleans (NO - DEF),1
 160,Kirk Cousins (Min - QB),1
-161,Matt Prater (Ari - K),1
 162,John Brown (TB - WR),1
 163,Tony Pollard (Dal - RB),1
 164,Darius Slayton (NYG - WR),2
 165,Blake Jarwin (Dal - TE),1
 166,Mecole Hardman (KC - WR),1
 167,Dallas Goedert (Phi - TE),1
-168,Younghoe Koo (Atl - K),1
 169,Duke Johnson (Mia - RB),1
 170,Boston Scott (Phi - RB),1
 171,Anthony Miller (Pit - WR),1
 172,Henry Ruggs III (LV - WR),1
 173,Mike Williams (LAC - WR),1
 174,Curtis Samuel (Was - WR),1
-175,Zane Gonzalez (Car - K),1
 176,Jalen Reagor (Phi - WR),1
 177,Chris Herndon (Min - TE),1
 178,Nyheim Hines (Ind - RB),1
-179,Los Angeles (LAC - DEF),1
 180,Austin Hooper (Cle - TE),1
 181,Ryan Tannehill (Ten - QB),1
 182,Justin Jefferson (Min - WR),1
 183,Jack Doyle (Ind - TE),1
-184,Michael Badgley (Ind - K),1
 185,Carlos Hyde (Jax - RB),1
 186,Justin Jackson (LAC - RB),1
 187,Antonio Brown (TB - WR),1
 188,Golden Tate (Ten - WR),1
 189,AJ Dillon (GB - RB),1
-190,Matt Gay (LAR - K),1
 191,Breshad Perriman (TB - WR),1
 192,Sammy Watkins (Bal - WR),1
 193,Eric Ebron (Pit - TE),1
 194,Larry Fitzgerald (Ari - WR),1
 195,Robby Anderson (Car - WR),1
 196,Devonta Freeman (Bal - RB),1
-197,Tampa Bay (TB - DEF),1
-198,Tyrell Williams (Det - WR),1
 199,Royce Freeman (Hou - RB),1
 200,Chris Conley (Hou - WR),1
 201,Jamaal Williams (Det - RB),1
 202,Michael Pittman Jr (Ind - WR),1
 203,Kenny Stills (NO - WR),1
-204,Denver (Den - DEF),1

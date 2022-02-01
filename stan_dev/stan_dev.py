@@ -69,6 +69,7 @@ for k, v in ordered.items():
     dev_hash[avg_hash[v] - k] = v
 
 
+# sort by mean - 1 standard deviation
 dev_hash = OrderedDict(sorted(dev_hash.items()))
 for k, v in dev_hash.items():
     print(f"{v} : {k}")

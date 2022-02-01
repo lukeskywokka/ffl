@@ -1,29 +1,63 @@
-import csv
+from csv import reader
 from bs4 import BeautifulSoup
-import re
-import requests
-import collections
+from re import sub
+# import requests
+from collections import OrderedDict
 import sys
+from datetime import datetime
+from itertools import combinations
+# import numpy
+# import multiprocessing
+# import math
+n = len(sys.argv)
+print("Total arguments passed:", n)
+ 
+# Arguments passed
+print("\nName of Python script:", sys.argv[0])
+ 
+print("\nArguments passed:", end = " ")
+for i in range(1, n):
+    print(sys.argv[i], end = " ")
+
+PNUM = int(sys.argv[1])
+QBNUM = int(sys.argv[2])
+RBNUM = int(sys.argv[3])
+WRNUM = int(sys.argv[4])
+TENUM = int(sys.argv[5])
+
+
 
 # https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value
 # data = https://www.pro-football-reference.com/years/2020/fantasy.htm
 
+
+# pypy python: https://doc.pypy.org/en/latest/install.html
+# symlinked to pypi
+# downloaded to ~/luke/PYPI
+
 cost_hash = {}
 players = []
 def read_file(filename):
+    """
+    Read cost file
+    """
     the_file = open(filename)
-    csvreader = csv.reader(the_file)
+    csvreader = reader(the_file)
     header = next(csvreader)
-    print(header)
+    # print(header)
     rows = []
     for k, row in enumerate(csvreader):
         # regex for removing parentheses with team name
         # print(row[1])
-        ret = re.sub("[\(\[].*?[\)\]]", "", row[1])
-        if " II" in ret:
-            ret = re.sub(" II", "", ret)
+        ret = sub("[\(\[].*?[\)\]]", "", row[1])
         if " III" in ret:
-            ret = re.sub(" III", "", ret)
+            ret = sub(" III", "", ret)
+        if " II" in ret:
+            ret = sub(" II", "", ret)
+        if "." in ret:
+            ret = sub("\.", "", ret)
+        if " Jr" in ret:
+            ret = sub(" Jr", "", ret)
         if ret[-1] == " ":
             ret = ret[:-1]
         cost_hash[ret] = int(row[2])
@@ -39,22 +73,28 @@ ppg_hash = {}
 pos_hash = {}
 def read_pts_file(filename):
     the_file = open(filename)
-    csvreader = csv.reader(the_file)
+    csvreader = reader(the_file)
     header = next(csvreader)
-    print(header)
+    # print(header)
     rows = []
     ppt_hash = {}
     for k, row in enumerate(csvreader):
         # if k == 0 or k == 1:
         #     continue
         #print(row)
-        ret = re.sub("\\\\.*", "", row[1])
+        ret = sub("\\\\.*", "", row[1])
         if "*" in row[1]:
-            ret = re.sub("\*", "", ret)
+            ret = sub("\*", "", ret)
         if "+" in row[1]:
-            ret = re.sub("\+", "", ret)
+            ret = sub("\+", "", ret)
         if "." in row[1]:
-            ret = re.sub("\.", "", ret)
+            ret = sub("\.", "", ret)
+        if " III" in ret:
+            ret = sub(" III", "", ret)
+        if " II" in ret:
+            ret = sub(" II", "", ret)
+        if " Jr" in ret:
+            ret = sub(" Jr", "", ret)
         if ret[-1] == " ":
             ret = ret[:-1]
         # print(ret)
@@ -72,260 +112,217 @@ def read_pts_file(filename):
             #print(f"{ret} = {row[27]} : {cost_hash[ret]}")
     the_file.close()
 
+def is_player_eligible(p, pos_map):
+    if p not in pos_hash:
+        return False
+    elif update_pos_map(pos_map, pos_hash[p]):
+        return True
+    else:
+        return False
 
-# will eventually need to sort by 
-# {k: v for k, v in sorted(x.items(), key=lambda item: item[1])}
-def bang_for_buck():
-    qb = 3
-    rb = 4
-    wr = 6
-    te = 2
-    bang_hash = {}
-    for k, v in cost_hash.items():
-        if k in pts_hash and k in cost_hash:
-            bang_hash[k] = pts_hash[k] / cost_hash[k]
-    
-    # sort in descending by value
-    bang_hash = {k: v for k, v in sorted(bang_hash.items(), key=lambda item: item[1], reverse=True)}
-    for k, v in bang_hash.items():
-        print(f"{k}: {v}")
+def n_length_combo(lst, n, pos_map):
+    #print("top")
+    #print(lst)
+    if n == 0:
+        #print("n == 0")
+        return [[]]
+     
+    l =[]
+    for i in range(0, len(lst)):
+        
+        m = lst[i]
+        # print(m)
+        if not is_player_eligible(m, pos_map):
+            continue
+        remLst = lst[i + 1:]
+        # print(remLst)
+         
+        for k, p in enumerate(n_length_combo(remLst, n-1, pos_map)):
+            l.append([m]+p)
+            if len(l[k]) == n:
+                reset_pos_map(pos_map)
+            #print(f"in loop: {k} : {l}")
+    #print(f"returning: {l}")      
+    return l
 
 
 def reset_pos_map(pos_map):
-    pos_map["QB"] = 1
-    pos_map["RB"] = 2
-    pos_map["WR"] = 4
-    pos_map["TE"] = 1
+    pos_map["QB"] = QBNUM
+    # pos_map["RB"] = RBNUM
+    # pos_map["WR"] = WRNUM
+    # pos_map["TE"] = TENUM
 
-def update(pos_map, player, scores, guys):
-    if player not in pos_hash:
+def update_pos_map(pos_map, pos):
+    if pos in pos_map and pos_map[pos] == 0:
         return False
-    if pos_hash[player] == "RB" and pos_map["RB"] > 0:
-        pos_map["RB"] -= 1
-        scores.append(pts_hash[player])
-        guys.append(player)
-    if pos_hash[player] == "WR" and pos_map["WR"] > 0:
-        pos_map["WR"] -= 1
-        scores.append(pts_hash[player])
-        guys.append(player)
-    if pos_hash[player] == "QB" and pos_map["QB"] > 0:
-        pos_map["QB"] -= 1
-        scores.append(pts_hash[player])
-        guys.append(player)
-    if pos_hash[player] == "TE" and pos_map["TE"] > 0:
-        pos_map["TE"] -= 1
-        scores.append(pts_hash[player])
-        guys.append(player)
-    return True
+    elif pos in pos_map:
+        pos_map[pos] -= 1
+        return True
+    else:
+        return True
 
-def update_ppg(pos_map, player, scores, guys):
-    if player not in pos_hash:
-        return False
-    if pos_hash[player] == "RB" and pos_map["RB"] > 0:
-        pos_map["RB"] -= 1
-        scores.append(ppg_hash[player])
-        guys.append(player)
-    if pos_hash[player] == "WR" and pos_map["WR"] > 0:
-        pos_map["WR"] -= 1
-        scores.append(ppg_hash[player])
-        guys.append(player)
-    if pos_hash[player] == "QB" and pos_map["QB"] > 0:
-        pos_map["QB"] -= 1
-        scores.append(ppg_hash[player])
-        guys.append(player)
-    if pos_hash[player] == "TE" and pos_map["TE"] > 0:
-        pos_map["TE"] -= 1
-        scores.append(ppg_hash[player])
-        guys.append(player)
-    return True
-
-def is_eligible(pos_map, player):
-    if player not in pos_hash:
-        return False
-    if pos_hash[player] == "RB" and pos_map["RB"] > 0:
-        return True
-    if pos_hash[player] == "WR" and pos_map["WR"] > 0:
-        return True
-    if pos_hash[player] == "QB" and pos_map["QB"] > 0:
-        return True
-    if pos_hash[player] == "TE" and pos_map["TE"] > 0:
-        return True
-    return False
-
-def best_draft_total_season():
-    ret = {}
-    pos_map = {}
-    reset_pos_map(pos_map)
+def is_team_eligible(team, pos_map):
     money = 200
-    maxx = float('-inf')
-    maxx_guys = []
-    scores = []
-    guys = []
-    for i in range(len(players)):
-        for j in range(i + 1, len(players)):
-            scores = []
-            guys = []
-            reset_pos_map(pos_map)
-            money = 200 - cost_hash[players[j]] - cost_hash[players[i]]
-            update(pos_map, players[j], scores, guys)
-            update(pos_map, players[i], scores, guys)
+    reset_pos_map(pos_map)
+    for p in team:
+        money = money - cost_hash[p]
+        if update_pos_map(pos_map, pos_hash[p]):
+            continue
+        elif money < 0:
+            return False
+        else:
+            return False
+    return True
 
-            for k in range(j + 1, len(players)):
-                if players[k] not in cost_hash or players[k] not in pts_hash:
-                    continue
-                if (money - cost_hash[players[k]]) < 0:
-                    #print("whoops, can't buy him")
-                    continue
-                if (money - cost_hash[players[k]]) == 0:
-                    if is_eligible(pos_map, players[k]):
-                        scores.append(pts_hash[players[k]])
-                        guys.append(players[k])
-                        break
-                    else:
-                        continue
-                    
-                update(pos_map, players[k], scores, guys)
-                # if not ret:
-                #     continue
-                money = money - cost_hash[players[k]]
-                
-            
-            if sum(scores) > maxx:
-                maxx = sum(scores)
-                maxx_guys = guys
-            # print(f"{sum(scores)} : {guys}")
-            ret[sum(scores)] = guys
+def get_team_ppg(team):
+    ppg = 0
+    for p in team:
+        ppg += ppg_hash[p]
+    return ppg
+
+def get_team_total(team):
+    tot = 0
+    for p in team:
+        tot += pts_hash[p]
+    return tot
     
-    print(maxx)
-    print(maxx_guys)
+p1_ret = {}
+p2_ret = {}
+p3_ret = {}
+p4_ret = {}
+def player_loop(players, id):
+    print(f"{id}: starting loop")
+    pos_map = {}
+    ret_ppg = {}
+    for p in players:
+        if is_team_eligible(p, pos_map):
+            ppg = 0
+            total = 0
+            # print(r)
+            ppg = get_team_ppg(p)
+            # total = get_team_total(r)
+            ret_ppg[ppg] = p
+    print(f"{id}: Lists gathered. Going to order them: {datetime.now()}")
+    ret_ppg = OrderedDict(sorted(ret_ppg.items(), reverse=True))
+    print(f"{id}: Lists ordered. Going to print them: {datetime.now()}")
+    i = 0
+    print(f"{id}: PPG")
+    for k, v in ret_ppg.items(): 
+        if i == 10:
+            break
+        print(f"{i} : {k} : {v}")
+        i += 1
+    print("=============")
+    
+
+
+# https://stackoverflow.com/questions/23816546/how-many-processes-should-i-run-in-parallel
+def best_draft_itertools(num_players):
+    # combo_num = math.comb(len(players), num_players)
+    start = datetime.now()
+    print(start)
+    ret = (combinations(players, num_players))
+    # for r in ret:
+    #     r.append("heheheh")
+    #     print(r)
+    pos_map = {}
+    print(f"Combos Received at {datetime.now()}...calculating points")
+    ret_pts = {}
+    # chunks = int(combo_num / 2)
+    # manager = multiprocessing.Manager()
+    # ret_ppg = manager.dict()
+    
+    # p1 = multiprocessing.Process(target=player_loop, args=(ret[0:chunks], 1))
+    # p2 = multiprocessing.Process(target=player_loop, args=(ret[chunks-1:], 2))
+    #chunks += chunks
+    #p3 = multiprocessing.Process(target=player_loop, args=(ret[chunks-1:], 3))
+    # chunks += chunks
+    # p4 = multiprocessing.Process(target=player_loop, args=(ret[chunks-1:], 4))
+    # p1.start()
+    # p2.start()
+    # p3.start()
+    # p4.start()
+    # p1.join()
+    # p2.join()
+    # p3.join()
+    # p4.join()
+    # global p1_ret, p2_ret
+    # print(f"{len(p1_ret)}, {len(p2_ret)}")
+    # ret_ppg = {**p1_ret, **p2_ret}
+    # print(len(ret_ppg))
+    # for k, v in ret_ppg.items():
+    #     print(v)
+
+    # Single process
+    ret_ppg = {}
+    for r in ret:
+        if is_team_eligible(r, pos_map):
+            ppg = 0
+            # total = 0
+            # print(r)
+            ppg = get_team_ppg(r)
+            # total = get_team_total(r)
+            if ppg < 145:
+                continue
+            ret_ppg[ppg] = r
+            # ret_pts[total] = r
+    
+    print(f"Done collecting points information at {datetime.now()} ")
 
     # https://stackoverflow.com/questions/9001509/how-can-i-sort-a-dictionary-by-key
     # sort by key
-    ret = collections.OrderedDict(sorted(ret.items()))
+    ret_ppg = OrderedDict(sorted(ret_ppg.items(), reverse=True))
+    # ret_pts = collections.OrderedDict(sorted(ret_pts.items(), reverse=True))
     i = 0
-    rank = 0
-    for k, v in ret.items(): 
-        rank = 0
-        
-        for pl in v:
-            rank += rank_hash[pl]
-        avg_rank = 0
-        if len(v) > 0:
-            avg_rank = (rank / len(v))
-            print(f"{i} : {avg_rank} : {k} :  {v}")
+    print("PPG")
+    for k, v in ret_ppg.items(): 
+        if i == 50:
+            break
+        print(f"{i} : {k} : {v}")
         i += 1
-        # if "Tom Brady" in v and "Derrick Henry" in v:\
-        #     print(f"{i} : {avg_rank} : {k} :  {v}")
+    print("=============")
+    # print("Total points")
+    # i = 0
+    # for k, v in ret_pts.items(): 
+    #     if i == 30:
+    #         break
+    #     print(f"{i} : {k} : {v}")
+    #     i += 1
+    stop = datetime.now()
+    print("=======")
+    print(f"Start = {start}")
+    print(f"Stop = {stop}")
 
 
-def best_draft_ppg():
-    ret = {}
-    pos_map = {}
-    reset_pos_map(pos_map)
-    money = 200
-    maxx = float('-inf')
-    maxx_guys = []
-    scores = []
-    guys = []
-    for i in range(len(players)):
-        for j in range(i + 1, len(players)):
-            scores = []
-            guys = []
-            reset_pos_map(pos_map)
-            money = 200 - cost_hash[players[j]] - cost_hash[players[i]]
-            update_ppg(pos_map, players[j], scores, guys)
-            update_ppg(pos_map, players[i], scores, guys)
-
-            for k in range(j + 1, len(players)):
-                if players[k] not in cost_hash or players[k] not in ppg_hash:
-                    continue
-                if (money - cost_hash[players[k]]) < 0:
-                    #print("whoops, can't buy him")
-                    continue
-                if (money - cost_hash[players[k]]) == 0:
-                    if is_eligible(pos_map, players[k]):
-                        scores.append(ppg_hash[players[k]])
-                        guys.append(players[k])
-                        break
-                    else:
-                        continue
-                    
-                update_ppg(pos_map, players[k], scores, guys)
-                # if not ret:
-                #     continue
-                money = money - cost_hash[players[k]]
-                
-            
-            if sum(scores) > maxx:
-                maxx = sum(scores)
-                maxx_guys = guys
-            # print(f"{sum(scores)} : {guys}")
-            ret[sum(scores)] = guys
-    
-    print(maxx)
-    print(maxx_guys)
-
-    # https://stackoverflow.com/questions/9001509/how-can-i-sort-a-dictionary-by-key
-    # sort by key
-    ret = collections.OrderedDict(sorted(ret.items()))
-    i = 0
-    for k, v in ret.items(): 
-        print(f"{i} : {k}: {v}")
-        i += 1
-
-            
+def combos(iterable, r):
+    # combinations('ABCD', 2) --> AB AC AD BC BD CD
+    # combinations(range(4), 3) --> 012 013 023 123
+    pool = tuple(iterable)
+    n = len(pool)
+    if r > n:
+        return
+    indices = list(range(r))
+    yield tuple(pool[i] for i in indices)
+    while True:
+        for i in reversed(range(r)):
+            if indices[i] != i + n - r:
+                break
+        else:
+            return
+        indices[i] += 1
+        for j in range(i+1, r):
+            indices[j] = indices[j-1] + 1
+        yield tuple(pool[i] for i in indices)
 
 
 
+if __name__ == "__main__":
+    read_file("draft.csv")
+    read_pts_file("2020_fantasy_pts.csv")
+    best_draft_itertools(PNUM)
+    some_players = ["Kupp", "Deebo", "tyreek", "chase"]
 
 
-read_file("draft.csv")
-read_pts_file("2020_fantasy_pts.csv")
-# best_draft_ppg()
-best_draft_total_season()
-# for item in split_list:
-#     print(item)
+# PPG: superflex 2qb, 2rb, 4wr, 1te
 
 
-
-# best full team:
-# 3242.3
-# ['Kyler Murray', 'CeeDee Lamb', 'Tom Brady', "Le'Veon Bell", 'Ronald Jones', 'James Conner', 'Justin Herbert', "D'Andre Swift", 'Mark Ingram', 'Marquise Brown', 'Calvin Ridley', 'Adam Thielen', 'Darren Waller', 'Tyler Higbee', 'Danny Amendola', 'Sony Michel']
-
-# superflex: best starters: 2qb, 3rb, 3wr, 1te
-# 2329.2999999999997
-# ['James Conner', 'Alvin Kamara', 'Justin Herbert', "D'Andre Swift", 'Marquise Brown', 'Calvin Ridley', 'Adam Thielen', 'Darren Waller', 'Ben Roethlisberger']
-
-
-# starters: 2qb 2rb 4wr 1te
-# rank 1 of 10532 : 2306.4: ['Ronald Jones', 'Davante Adams', 'James Conner', 'Justin Herbert', 'Marquise Brown', 'Calvin Ridley', 'Adam Thielen', 'Darren Waller', 'Ben Roethlisberger']
-
-# starters: 2qb 4rb 2wr 1te
-# 1 of 10390 : 2261.6: ['Ronald Jones', 'Alvin Kamara', 'James Conner', 'Justin Herbert', "D'Andre Swift", 'Marquise Brown', 'Calvin Ridley', 'Darren Waller', 'Ben Roethlisberger']
-
-# starters: 2qb 2rb 3wr 2te
-# 10663 : 2289.4: ['Ronald Jones', 'Alvin Kamara', 'Justin Herbert', 'Marquise Brown', 'Calvin Ridley', 'Adam Thielen', 'Darren Waller', 'Tyler Higbee', 'Ben Roethlisberger']
-
-# starters: 2qb, 3rb 2wr 2te
-# 1 of 10598 : 2203.5: ['James Conner', 'Alvin Kamara', 'Justin Herbert', "D'Andre Swift", 'Marquise Brown', 'Calvin Ridley', 'Darren Waller', 'Tyler Higbee', 'Ben Roethlisberger']
-
-
-# no superflex: 3wr
-# 9697 : 1897.5: ['Justin Herbert', 'Alvin Kamara', "D'Andre Swift", 'Marquise Brown', 'Calvin Ridley', 'Adam Thielen', 'Darren Waller']
-
-# no superflex: 3rb
-# 9834 : 1808.1: ['James Conner', 'Alvin Kamara', 'Justin Herbert', "D'Andre Swift", 'Marquise Brown', 'Calvin Ridley', 'Darren Waller']
-
-
-# superflex: 1qb 4rb 3 wr 1 te
-# 1 of 10136 : 2248.4: ['Ronald Jones', 'Alvin Kamara', 'James Conner', 'Justin Herbert', "D'Andre Swift", 'Marquise Brown', 'Calvin Ridley', 'Adam Thielen', 'Darren Waller']
-
-# superflex: 1qb 3rb 4wr 1te
-# 1 of 10075 : 2229.0: ['Ronald Jones', 'Davante Adams', 'James Conner', 'Justin Herbert', "D'Andre Swift", 'Marquise Brown', 'Calvin Ridley', 'Adam Thielen', 'Darren Waller']
-
-
-# superflex: 1qb 2rb 5wr 1te
-# 1 of 10074 : 2206.5: ['Justin Herbert', 'Aaron Jones', "D'Andre Swift", 'Marquise Brown', 'Calvin Ridley', 'Adam Thielen', 'Darren Waller', 'Sterling Shepard', 'Tyler Lockett']
-
-# superflex: 1qb 4rb 3wr 1te
-# 1 of 10136 : 2248.4: ['Ronald Jones', 'Alvin Kamara', 'James Conner', 'Justin Herbert', "D'Andre Swift", 'Marquise Brown', 'Calvin Ridley', 'Adam Thielen', 'Darren Waller']
