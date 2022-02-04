@@ -124,6 +124,7 @@ def read_pts_file(filename):
 
 rank_hash = {}
 def ppg_rank():
+    # sort by value
     sort_ppg_hash = {k: v for k, v in sorted(ppg_hash.items(), reverse=True, key=lambda item: item[1])}
     for k, item in enumerate(sort_ppg_hash):
         rank_hash[item] = k + 1
@@ -398,7 +399,7 @@ if __name__ == "__main__":
 # vet: Rodgers, Russ, Carr
 # avg vet: Cousins, Jimmy G, Matt Ryan, Tua
 # newcomer: Zach Wilson, Trevor Lawrence
-# rook: trey, 
+# rook: trey, Malik
 # bleh: Daniel Jones (brian daboll), goff
 
 

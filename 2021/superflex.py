@@ -40,6 +40,8 @@ from itertools import combinations
 pts_hash = {}
 ppg_hash = {}
 pos_hash = {}
+
+# rank by ppg
 rank_hash = {}
 players = []
 def read_file(filename):
@@ -127,13 +129,15 @@ def make_team_from_picks(numbers):
     play_pos = defaultdict(int)
     pts = 0
     i = 0
+    rank = 0
     for num in numbers:
         draft.append(players[num - 1])
+        rank += rank_hash[players[num - 1]]
         pts += ppg_hash[players[num - 1]]
         if i == 8:
             print(pts)
         i += 1
-    print(f"{pts}: {draft}")
+    print(f"{pts}: {rank / len(numbers)} : {draft}")
 
     for p in draft:
         pos = pos_hash[p]
@@ -178,3 +182,15 @@ if __name__ == "__main__":
         picks = gen_picks(i)
         make_team_from_picks(picks)
         print("=====")
+
+
+
+
+# 1
+# 144.29999999999998
+# 195.49999999999997: 86.78571428571429 : ['Cooper Kupp', "Ja'Marr Chase", 'Najee Harris', 'Carson Wentz', 'Jimmy Garoppolo', 'Michael Pittman Jr.', 'DJ Moore', 'Christian Kirk', 'Rashaad Penny', 'Jarvis Landry', 'Sterling Shepard', 'Brandon Aiyuk', 'Cole Beasley', 'Devontae Booker']
+# defaultdict(<class 'int'>, {'WR': 9, 'RB': 3, 'QB': 2})
+# 
+# 4th/5th round QBS = Jimmy G, Carr, Wentz
+# 1, 2, 3 go for studs.  If you want top dollar TE it needs to be in rounds 3 or 4
+# maybe round 6 TE for PITTS or Freiermuth

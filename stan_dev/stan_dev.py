@@ -4,7 +4,7 @@ import os
 import math
 from collections import OrderedDict
 
-con = sqlite3.connect("wr.db")
+con = sqlite3.connect("te.db")
 
 def get_points(data):
     weekly_points = []
@@ -40,7 +40,7 @@ def sub_and_square(points, mean):
 
 with con:
     # data = con.execute("SELECT * FROM WR_WEEKLY WHERE name == 'cooper kupp'")
-    data = con.execute("SELECT * FROM WR_WEEKLY")
+    data = con.execute(f"SELECT * FROM TE_WEEKLY")
 
 
 std_hash = {}
@@ -62,13 +62,13 @@ for k, v in enumerate(data):
     #print("====")
 
 # sort by key
-ordered = OrderedDict(sorted(std_hash.items()))
+ordered = OrderedDict(sorted(std_hash.items(), reverse=True))
 dev_hash = {}
 for k, v in ordered.items():
-    print(f"{v} : {avg_hash[v] - k}")
+    print(f"{v} : {k}")
     dev_hash[avg_hash[v] - k] = v
 
-
+print("=====")
 # sort by mean - 1 standard deviation
 dev_hash = OrderedDict(sorted(dev_hash.items()))
 for k, v in dev_hash.items():
