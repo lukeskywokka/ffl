@@ -1,16 +1,21 @@
 from csv import reader
 from bs4 import BeautifulSoup
 from re import sub
-# import requests
 from collections import OrderedDict, defaultdict
 import sys
 from datetime import datetime
 from itertools import combinations
 
+"""
+Sort 2021 players by PPG and simulate doing a snake draft on that list.
+There's no filtering based on player position so some teams have like 5 QBs.
+"""
+
+
+# 12 man superflex mock draft
 # https://wolfsports.com/fantasy-football/2021-fantasy-football-mock-draft-2-0-12-team-superflex-ppr/
-# import numpy
-# import multiprocessing
-# import math
+
+
 # n = len(sys.argv)
 # print("Total arguments passed:", n)
  
@@ -30,7 +35,6 @@ from itertools import combinations
 
 
 # https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value
-# data = https://www.pro-football-reference.com/years/2020/fantasy.htm
 
 
 # pypy python: https://doc.pypy.org/en/latest/install.html
@@ -122,7 +126,12 @@ def gen_picks(num):
     # print(picks)
     return picks
 
-
+def is_eligible(player, eligible_hash):
+    if eligible_hash[pos_hash[player]] == 0:
+        return False
+    else:
+        eligible_hash[pos_hash[player]] -= 1
+        return True
 
 def make_team_from_picks(numbers):
     draft = []
@@ -134,10 +143,26 @@ def make_team_from_picks(numbers):
         draft.append(players[num - 1])
         rank += rank_hash[players[num - 1]]
         pts += ppg_hash[players[num - 1]]
-        if i == 8:
-            print(pts)
         i += 1
-    print(f"{pts}: {rank / len(numbers)} : {draft}")
+    # print(f"{pts}: {rank / len(numbers)} : {draft}")
+    # print("--")
+
+    # get best starter points
+    eligible_hash = {}
+    eligible_hash['QB'] = 2
+    eligible_hash['RB'] = 2
+    eligible_hash['WR'] = 3
+    eligible_hash['TE'] = 1
+    starters = []
+    rank = 0
+    pts = 0
+    print("starters")
+    for p in draft:
+        if is_eligible(p, eligible_hash):
+            starters.append(p)
+            rank += rank_hash[p]
+            pts += ppg_hash[p]
+    print(f"Avg ppg: {pts / len(starters)} : {rank / len(starters)} : {starters}")
 
     for p in draft:
         pos = pos_hash[p]
