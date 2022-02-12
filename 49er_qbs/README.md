@@ -4,14 +4,14 @@ What do the numbers say about 49er QBs of yesterday and today?"
 Using Python, I was able to sort and display the stats by using a print-to-markdown method...that's what you see in this README!
 For regular season and postseason, QBS are graded based on completion percentage, win percentage, 
     net TDs per game, fantasy points per game, net yards per game, game winning drives per game, 
-    yards per catch, turnovers per game, sacks per game
-6 points goes to the best in the category and 1 point goes to worst in the category
+    yards per catch, turnovers per game, sacks per game.
+6 points goes to the best in the category and 1 point goes to worst in the category.
 Young and Montana unfortunately do not have 1st down data until 1994 so I can't use that as a metric for the grade.  You'll see below that their 1st down data is skewed.
 Montana did have 170 net 1st downs when he played for the chiefs.  In Young's best recorded year he had 243 net 1st downs.
 <br /><br />
 Shoutout to Pro Football Reference for all of the data! https://www.pro-football-reference.com/.
 ## TL;DR
-Montana is still the best! But there are definitely some interesting finds in the postseason stats
+Montana is still the best! But there are definitely some interesting finds in the postseason stats.
 Garoppolo fell off a cliff in the postseason and Kaepernick really came alive in his two postseason runs.
 Is there a data point thats missing? Is my grade scale fair?  Please let me know and I'd be happy to look and see if I can tweak it!
 # Data
