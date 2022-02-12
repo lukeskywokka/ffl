@@ -18,10 +18,10 @@ print("Montana did have 170 net 1st downs when he played for the chiefs.  In You
 print("<br /><br />")
 print("Shoutout to Pro Football Reference for all of the data! https://www.pro-football-reference.com/.")
 print("## TL;DR")
-print("Montana is still the best! But there are definitely some interesting finds in the postseason stats.")
-print("Garoppolo fell off a cliff in the postseason and Kaepernick really came alive in his two postseason runs.")
 print("Grades are at the very bottom.<br /><br />")
-print("Is there a data point thats missing? Is my grade scale fair?  Please let me know and I'd be happy to look and see if I can tweak it!")
+print("Montana is still the best! But there are definitely some interesting finds in the postseason stats.")
+print("Garoppolo fell off a cliff in the postseason and Kaepernick really came alive in his two postseason runs.<br /><br />")
+print("Is there a data point that's missing? Is my grade scale fair?  Please let me know and I'd be happy to look and see if I can tweak it!")
 print("# Data")
 
 headers = "Year,Age,Tm,Pos,No.,G,GS,QBrec,Cmp,Att,Cmp%,Yds,TD,TD%,Int,Int%,1D,Lng,Y/A,AY/A,Y/C,Y/G,Rate,Sk,Yds,Sk%,NY/A,ANY/A,4QC,GWD,AV,Awards"

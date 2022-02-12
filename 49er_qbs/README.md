@@ -11,10 +11,10 @@ Montana did have 170 net 1st downs when he played for the chiefs.  In Young's be
 <br /><br />
 Shoutout to Pro Football Reference for all of the data! https://www.pro-football-reference.com/.
 ## TL;DR
-Montana is still the best! But there are definitely some interesting finds in the postseason stats.
-Garoppolo fell off a cliff in the postseason and Kaepernick really came alive in his two postseason runs.
 Grades are at the very bottom.<br /><br />
-Is there a data point thats missing? Is my grade scale fair?  Please let me know and I'd be happy to look and see if I can tweak it!
+Montana is still the best! But there are definitely some interesting finds in the postseason stats.
+Garoppolo fell off a cliff in the postseason and Kaepernick really came alive in his two postseason runs.<br /><br />
+Is there a data point that's missing? Is my grade scale fair?  Please let me know and I'd be happy to look and see if I can tweak it!
 # Data
 ## REGULAR SEASON CAREER STATS
 ### CAREER PASSING YARDS
