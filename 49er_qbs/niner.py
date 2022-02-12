@@ -5,7 +5,7 @@ Maybe even calculate their fantasy stats
 
 print("# Intro")
 print('''What do the numbers say about 49er QBs of yesterday and today?"
-    Below I have gathered the regular season and postseason stats of Montana, Young, Garcia, Smith, Kaepernick, and Garoppolo.'''
+    Below I have gathered the regular season and postseason stats of Montana, Young, Garcia, Smith, Kaepernick, and Garoppolo.<br />'''
 )
 print("Using Python, I was able to sort and display the stats by using a print-to-markdown method...that's what you see in this README!")
 print('''For regular season and postseason, QBS are graded based on completion percentage, win percentage, 
@@ -15,7 +15,7 @@ print('''For regular season and postseason, QBS are graded based on completion p
 print("6 points goes to the best in the category and 1 point goes to worst in the category")
 print("Young and Montana unfortunately do not have 1st down data until 1994 so I can't use that as a metric for the grade.  You'll see below that their 1st down data is skewed.")
 print("Montana did have 170 net 1st downs when he played for the chiefs.  In Young's best recorded year he had 243 net 1st downs.")
-print("\n")
+print("<br />")
 print("Shoutout to Pro Football Reference for all of the data! https://www.pro-football-reference.com/.")
 print("## TL;DR")
 print("Montana is still the best! But there are definitely some interesting finds in the postseason stats")
@@ -181,7 +181,7 @@ def print_data(stat_dict, stat_title):
     print(f"### {stat_title}")
     stat_dict = {k: v for k, v in sorted(stat_dict.items(), reverse=True, key=lambda item: item[1])}
     for k, v in stat_dict.items():
-        print(f"{k} : {v}\n")
+        print(f"{k} : {v}<br />")
 
 def print_negative_data(stat_dict, stat_title, qb_grade):
     print(f"### {stat_title}")
@@ -190,7 +190,7 @@ def print_negative_data(stat_dict, stat_title, qb_grade):
     for k, v in stat_dict.items():
         qb_grade[k] += vals
         vals += 1
-        print(f"{k} : {v}\n")
+        print(f"{k} : {v}<br />")
 
 def print_positive_data(stat_dict, stat_title, qb_grade):
     print(f"### {stat_title}")
@@ -202,7 +202,7 @@ def print_positive_data(stat_dict, stat_title, qb_grade):
         if prev_val != v:
             vals -= 1
         prev_val = v
-        print(f"{k} : {v}\n")
+        print(f"{k} : {v}<br />")
 
 
 populate_dicts("Montana", montana_career_data)
@@ -230,21 +230,21 @@ print("## REGULAR SEASON CAREER STATS")
 print("### CAREER PASSING YARDS")
 career_yards = {k: v for k, v in sorted(career_yards.items(), reverse=True, key=lambda item: item[1])}
 for k, v in career_yards.items():
-    print(f"{k} : {v}\n")
+    print(f"{k} : {v}<br />")
 
 print_data(career_att, "CAREER PASSING ATTEMPTS")
 print_positive_data(career_ypc, "YARDS PER CATCH", qb_grade_career)
 print("### CAREER PASSING TDS")
 career_tds = {k: v for k, v in sorted(career_tds.items(), reverse=True, key=lambda item: item[1])}
 for k, v in career_tds.items():
-    print(f"{k} : {v}\n")
+    print(f"{k} : {v}<br />")
 
 print_positive_data(career_comp_pct, "CAREER COMPLETION PERCENTAGE", qb_grade_career)
 print_positive_data(career_win_pct, "CAREER WIN PERCENTAGE", qb_grade_career)
 
 print("### CAREER RECORD")
 for k, v in career_record.items():
-    print(f"{k} : {v}\n")
+    print(f"{k} : {v}<br />")
 
 print_data(career_gwd, "CAREER GWD")
 print_data(career_rating, "CAREER RATING")
