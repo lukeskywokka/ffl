@@ -20,6 +20,7 @@ print("Shoutout to Pro Football Reference for all of the data! https://www.pro-f
 print("## TL;DR")
 print("Montana is still the best! But there are definitely some interesting finds in the postseason stats.")
 print("Garoppolo fell off a cliff in the postseason and Kaepernick really came alive in his two postseason runs.")
+print("Grades are at the very bottom.<br /><br />")
 print("Is there a data point thats missing? Is my grade scale fair?  Please let me know and I'd be happy to look and see if I can tweak it!")
 print("# Data")
 
@@ -265,7 +266,6 @@ print_positive_data(pg_net_yds, "NET YARDS PER GAME", qb_grade_career)
 print_positive_data(pg_net_tds, "NET TDS PER GAME", qb_grade_career)
 print_negative_data(pg_net_tos, "NET TURNOVERS PER GAME", qb_grade_career)
 print_data(pg_net_1st, "NET FIRST DOWNS PER GAME")
-print_data(qb_grade_career, "QB PER GAME REGULAR SEASON GRADE")
 print("## POSTSEASON PER GAME STATS")
 print_data(post_pg_yards, "PASSING YARDS PER GAME")
 print_data(post_pg_tds, "PASSING TDS PER GAME")
@@ -281,6 +281,8 @@ print_data(post_pg_net_1st, "NET FIRST DOWNS PER GAME")
 print_positive_data(post_pg_net_tds, "NET TDS PER GAME", qb_grade_post)
 print_negative_data(post_pg_net_tos, "NET TURNOVERS PER GAME", qb_grade_post)
 
+print("## GRADES")
+print_data(qb_grade_career, "QB PER GAME REGULAR SEASON GRADE")
 print_data(qb_grade_post, "QB PER GAME POSTSEASON GRADE")
 qb_grade_total = {}
 for k, v in qb_grade_career.items():

@@ -13,6 +13,7 @@ Shoutout to Pro Football Reference for all of the data! https://www.pro-football
 ## TL;DR
 Montana is still the best! But there are definitely some interesting finds in the postseason stats.
 Garoppolo fell off a cliff in the postseason and Kaepernick really came alive in his two postseason runs.
+Grades are at the very bottom.<br /><br />
 Is there a data point thats missing? Is my grade scale fair?  Please let me know and I'd be happy to look and see if I can tweak it!
 # Data
 ## REGULAR SEASON CAREER STATS
@@ -165,13 +166,6 @@ Kaepernick : 11.96551724137931<br />
 Smith : 11.167664670658683<br />
 Young : 6.811188811188811<br />
 Montana : 1.0365853658536586<br />
-### QB PER GAME REGULAR SEASON GRADE
-Montana : 42<br />
-Young : 40<br />
-Garoppolo : 37<br />
-Garcia : 27<br />
-Kaepernick : 22<br />
-Smith : 21<br />
 ## POSTSEASON PER GAME STATS
 ### PASSING YARDS PER GAME
 Montana : 250.95652173913044<br />
@@ -258,6 +252,14 @@ Kaepernick : 1.5<br />
 Montana : 1.2173913043478262<br />
 Garoppolo : 1.0<br />
 Smith : 0.7142857142857143<br />
+## GRADES
+### QB PER GAME REGULAR SEASON GRADE
+Montana : 42<br />
+Young : 40<br />
+Garoppolo : 37<br />
+Garcia : 27<br />
+Kaepernick : 22<br />
+Smith : 21<br />
 ### QB PER GAME POSTSEASON GRADE
 Montana : 36<br />
 Kaepernick : 33<br />
