@@ -5,7 +5,7 @@ Maybe even calculate their fantasy stats
 
 print("# Intro")
 print('''What do the numbers say about 49er QBs of yesterday and today?"
-    Below I have gathered the regular season and postseason stats of Montana, Young, Garcia, Smith, Kaepernick, and Garoppolo.<br />'''
+    Below I have gathered the regular season and postseason stats of Montana, Young, Garcia, Smith, Kaepernick, and Garoppolo.<br /><br />'''
 )
 print("Using Python, I was able to sort and display the stats by using a print-to-markdown method...that's what you see in this README!")
 print('''For regular season and postseason, QBS are graded based on completion percentage, win percentage, 
@@ -15,10 +15,11 @@ print('''For regular season and postseason, QBS are graded based on completion p
 print("6 points goes to the best in the category and 1 point goes to worst in the category")
 print("Young and Montana unfortunately do not have 1st down data until 1994 so I can't use that as a metric for the grade.  You'll see below that their 1st down data is skewed.")
 print("Montana did have 170 net 1st downs when he played for the chiefs.  In Young's best recorded year he had 243 net 1st downs.")
-print("<br />")
+print("<br /><br />")
 print("Shoutout to Pro Football Reference for all of the data! https://www.pro-football-reference.com/.")
 print("## TL;DR")
 print("Montana is still the best! But there are definitely some interesting finds in the postseason stats")
+print("Garoppolo fell off a cliff in the postseason and Kaepernick really came alive in his two postseason runs.")
 print("Is there a data point thats missing? Is my grade scale fair?  Please let me know and I'd be happy to look and see if I can tweak it!")
 print("# Data")
 
@@ -259,7 +260,7 @@ print_positive_data(pg_fpts, "FPTS PER GAME (using superflex rules)", qb_grade_c
 print_data(pg_ints, "INTS PER GAME")
 print_negative_data(pg_sacks, "SACKS PER GAME", qb_grade_career)
 
-print("## REGULAR SEASON NET PER GAME (net meaning rushing/passing or fumble/int")
+print("## REGULAR SEASON NET PER GAME (net meaning rushing/passing or fumble/int)")
 print_positive_data(pg_net_yds, "NET YARDS PER GAME", qb_grade_career)
 print_positive_data(pg_net_tds, "NET TDS PER GAME", qb_grade_career)
 print_negative_data(pg_net_tos, "NET TURNOVERS PER GAME", qb_grade_career)
