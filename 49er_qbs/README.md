@@ -1,5 +1,5 @@
 # Intro
-What do the numbers say about 49er QBs of yesterday and today?"
+What do the numbers say about 49er QBs of yesterday and today?
     Below I have gathered the regular season and postseason stats of Montana, Young, Garcia, Smith, Kaepernick, and Garoppolo.<br /><br />
 Using Python, I was able to sort and display the stats by using a print-to-markdown method...that's what you see in this README!
 For regular season and postseason, QBS are graded based on completion percentage, win percentage, 
