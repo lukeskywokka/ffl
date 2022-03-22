@@ -75,7 +75,7 @@ def get_all_team_plays():
 
 
 def most_attempted_play_per_team():
-    print(f"Most attempted run type per team")
+    print("Most attempted run type per team")
     print("rank, team, attempts, yards, pct of plays, run type")
     for k, v in run_plays.items():
         great = [0, 0, "0", 0, 0]
@@ -87,7 +87,7 @@ def most_attempted_play_per_team():
 
 
 def most_efficient_run_play_per_team():
-    print(f"## Most efficient run type per team")
+    print("## Most efficient run type per team")
     print("TEAM, YPC, ATT RANK, TEAM, ATT, YDS, % OF TOTAL PLAYS, RUN TYPE <br />")
     ypc_hash = {}
     for k, v in run_plays.items():
@@ -129,7 +129,7 @@ def most_efficient_run_team():
         
     
 
-print("# Plays and their efficiency")
+print("# Plays Efficiency")
 print("""Below I have compield the data for: """)
 print("- most efficient run team: ie most yards per carry (ypc)")
 print("- most efficient run type per team")
