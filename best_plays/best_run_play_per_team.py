@@ -65,7 +65,7 @@ def get_all_team_plays():
     print("# All Team Running Plays")
     print("TEAM, YPC, ATT RANK, TEAM, ATT, YDS, % OF TOTAL PLAYS, RUN TYPE <br />")
     for k, plays in run_plays.items():
-        print(k)
+        print(f"{k} <br />")
         for p in plays:
             ypc = int(p[3]) / int(p[2])
             p = [ypc] + p
@@ -149,9 +149,13 @@ print("---")
 
 populate_dict(["re.csv", "rt.csv", "rg.csv", "c.csv", "lg.csv", "lt.csv", "le.csv"])
 print("---")
+print("---")
 most_efficient_run_team()
+print("---")
 print("---")
 most_efficient_run_play_per_team()
 print("---")
+print("---")
 get_all_team_plays()
+print("---")
 print("---")
