@@ -7,6 +7,12 @@ When the 2021 fantasy football season ended I wasn't ready to say goodbye.  I de
 - Best Snake Draft given 2021 players ranked by PPG
 
 
+# Git protocol
+- git add -A
+- git commit -m "minor touchup"
+- git push -u origin main
+
+
 # 2020 auction draft revelations
 - 3 WR 47 and I get tyreek, stefon, will fuller at 59 ppg avg rank = 24.6
 - 3 RBs spending 75 -> 150 ppg goes from 57 -> 67: 1 baller: Kamara, Montgomery, Gibson (rook)
