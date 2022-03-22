@@ -2,8 +2,7 @@
 Below I have compield the data for: 
 - most efficient run team: ie most yards per carry (ypc)
 - most efficient run type per team
-- all run plays per team
-<br />
+- all run plays per team <br />
 Eventually I will get to the passing plays.
 ---
 ---
