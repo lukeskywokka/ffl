@@ -42,7 +42,7 @@ MIA : [3.4424242424242424, 330, 1136] <br />
 HOU : [3.149295774647887, 355, 1118] <br />
 ---
 ## Most efficient run type per team
-TEAM, YPC, ATTEMPTS RANK, TEAM, ATT, YARDS, PERCENT OF TOTAL PLAYS, RUN TYPE <br />
+TEAM, YPC, ATT RANK, TEAM, ATT, YDS, % OF TOTAL PLAYS, RUN TYPE <br />
 IND : [9.11111111111111, ['20', 'IND', '36', '328', '2.90 %', 'Right End']] <br />
 NE : [9.105263157894736, ['32', 'NE', '19', '173', '1.57 %', 'Right End']] <br />
 CLE : [7.7368421052631575, ['21', 'CLE', '38', '294', '3.25 %', 'Left End']] <br />
@@ -77,7 +77,7 @@ KC : [4.38, ['10', 'KC', '50', '219', '3.90 %', 'Left End']] <br />
 HOU : [4.0212765957446805, ['14', 'HOU', '47', '189', '4.07 %', 'Right Guard']] <br />
 ---
 ## All Team Running Plays
-TEAM, YPC, ATTEMPTS RANK, TEAM, ATT, YARDS, PERCENT OF TOTAL PLAYS, RUN TYPE <br />
+TEAM, YPC, ATT RANK, TEAM, ATT, YDS, % OF TOTAL PLAYS, RUN TYPE <br />
 PHI
 [5.907692307692308, '1', 'PHI', '65', '384', '5.33 %', 'Right End'] <br />
 [4.512195121951219, '17', 'PHI', '41', '185', '3.36 %', 'Right Tackle'] <br />
