@@ -62,7 +62,7 @@ def get_team_plays(team):
 
 
 def get_all_team_plays():
-    print("## All Team Running Plays")
+    print("# All Team Running Plays")
     print("TEAM, YPC, ATT RANK, TEAM, ATT, YDS, % OF TOTAL PLAYS, RUN TYPE <br />")
     for k, plays in run_plays.items():
         print(k)
@@ -87,7 +87,7 @@ def most_attempted_play_per_team():
 
 
 def most_efficient_run_play_per_team():
-    print("## Most efficient run type per team")
+    print("# Most efficient run type per team")
     print("TEAM, YPC, ATT RANK, TEAM, ATT, YDS, % OF TOTAL PLAYS, RUN TYPE <br />")
     ypc_hash = {}
     for k, v in run_plays.items():
@@ -109,7 +109,7 @@ def most_efficient_run_play_per_team():
     
 
 def most_efficient_run_team():
-    print("## Most efficient run team")
+    print("# Most efficient run team")
     print("TEAM, YPC, ATT, YARDS <br />")
     eff_hash = {}
     for k, v in run_plays.items():

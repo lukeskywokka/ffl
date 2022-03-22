@@ -6,7 +6,7 @@ Below I have compield the data for:
 Eventually I will get to the passing plays.
 ---
 ---
-## Most efficient run team
+# Most efficient run team
 TEAM, YPC, ATT, YARDS <br />
 IND : [5.198581560283688, 423, 2199] <br />
 CLE : [5.091811414392059, 403, 2052] <br />
@@ -41,7 +41,7 @@ ATL : [3.656716417910448, 335, 1225] <br />
 MIA : [3.4424242424242424, 330, 1136] <br />
 HOU : [3.149295774647887, 355, 1118] <br />
 ---
-## Most efficient run type per team
+# Most efficient run type per team
 TEAM, YPC, ATT RANK, TEAM, ATT, YDS, % OF TOTAL PLAYS, RUN TYPE <br />
 IND : [9.11111111111111, ['20', 'IND', '36', '328', '2.90 %', 'Right End']] <br />
 NE : [9.105263157894736, ['32', 'NE', '19', '173', '1.57 %', 'Right End']] <br />
@@ -76,7 +76,7 @@ MIN : [4.603448275862069, ['4', 'MIN', '58', '267', '4.51 %', 'Right End']] <br 
 KC : [4.38, ['10', 'KC', '50', '219', '3.90 %', 'Left End']] <br />
 HOU : [4.0212765957446805, ['14', 'HOU', '47', '189', '4.07 %', 'Right Guard']] <br />
 ---
-## All Team Running Plays
+# All Team Running Plays
 TEAM, YPC, ATT RANK, TEAM, ATT, YDS, % OF TOTAL PLAYS, RUN TYPE <br />
 PHI
 [5.907692307692308, '1', 'PHI', '65', '384', '5.33 %', 'Right End'] <br />
