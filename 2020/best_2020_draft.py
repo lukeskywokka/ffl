@@ -383,20 +383,20 @@ if __name__ == "__main__":
 
 # 2021: 
 # WR: 6 for 60
-# baller: deebo, tyreek, kupp, davante, JJ, Diggs, DK, Godwin, Ridley
-# in between: diontae Johnson
+# baller: deebo, tyreek, kupp, davante, JJ, Diggs, DK, Godwin, Ridley, Ceedee, Coop, MT
+# in between: diontae Johnson, Evans
 # newcomer: Renfrow, Waddle, Devonta? Rondale or Elijah Moore? Toney
-# rook: metchie?
+# rook: metchie, Drake London, Treylon Burks
 
 # RBS 6 for $95
 # baller: can we get cmac for cheap? Ekeler, Najee
-# vet: chubb, conner, Lenny, Jacobs, Singletary, Swift, Akers, Pollard, Montgomery??, Saquon??
-# newcomer: javonte, michael carter jr, Elijah Mitchell, Rhamondre, Penny, Harris, helaire
+# vet: chubb, conner, Lenny, Jacobs, Singletary, Swift, Akers, Pollard, Montgomery??, Saquon??, carson
+# newcomer: javonte, michael carter jr, Elijah Mitchell, Rhamondre, Penny, helaire
 # rook: watch draft
 
 # Qbs: 20 for 2 or 3
-# baller: Mahomes, Allen, Jackson, Murray, burrow, Stafford
-# vet: Rodgers, Russ, Carr
+# baller: Mahomes, Allen, Jackson, Murray, burrow, Stafford, Herbie
+# vet: Rodgers, Russ, Carr, Matt Ryan
 # avg vet: Cousins, Jimmy G, Matt Ryan, Tua
 # newcomer: Zach Wilson, Trevor Lawrence
 # rook: trey, Malik
@@ -406,7 +406,7 @@ if __name__ == "__main__":
 # TE:15
 # baller: waller, kelce, kittle, Andrews
 # avg: Hockenson, Fant, Henry, Gesicki
-# newcomer: PITTS
+# newcomer: PITTS, albert O
 # Pat Freiermuth
     
 
