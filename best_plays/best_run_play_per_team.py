@@ -129,12 +129,12 @@ def most_efficient_run_team():
         
     
 
-print("# Plays Efficiency")
-print("""Below I have compield the data for: """)
+print("# Play Efficiency")
+print("""Below I have compiled the data for: """)
 print("- most efficient run team: ie most yards per carry (ypc)")
 print("- most efficient run type per team")
-print("- all run plays per team <br />")
-print("Eventually I will get to the passing plays.")
+print("- all run plays per team <br /> <br /> ")
+print("Eventually I will get to the passing plays.  Sorry about the bold, it seems to be a formatting error.")
 print("---")
 # 
 # print("rank, team, attempts, yards, pct of plays")

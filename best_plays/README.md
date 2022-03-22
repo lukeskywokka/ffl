@@ -1,9 +1,9 @@
-# Plays Efficiency
-Below I have compield the data for: 
+# Play Efficiency
+Below I have compiled the data for: 
 - most efficient run team: ie most yards per carry (ypc)
 - most efficient run type per team
-- all run plays per team <br />
-Eventually I will get to the passing plays.
+- all run plays per team <br /> <br /> 
+Eventually I will get to the passing plays.  Sorry about the bold, it seems to be a formatting error.
 ---
 ---
 ---
