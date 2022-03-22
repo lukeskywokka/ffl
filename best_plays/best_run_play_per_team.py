@@ -63,13 +63,13 @@ def get_team_plays(team):
 
 def get_all_team_plays():
     print("## All Team Running Plays")
-    print("TEAM, YPC, ATTEMPTS RANK, TEAM, ATT, YARDS, PERCENT OF TOTAL PLAYS, RUN TYPE")
+    print("TEAM, YPC, ATTEMPTS RANK, TEAM, ATT, YARDS, PERCENT OF TOTAL PLAYS, RUN TYPE <br />")
     for k, plays in run_plays.items():
         print(k)
         for p in plays:
             ypc = int(p[3]) / int(p[2])
             p = [ypc] + p
-            print(p)
+            print(f"{p} <br />")
         print("---")
     
 
@@ -88,7 +88,7 @@ def most_attempted_play_per_team():
 
 def most_efficient_run_play_per_team():
     print(f"## Most efficient run type per team")
-    print("TEAM, YPC, ATTEMPTS RANK, TEAM, ATT, YARDS, PERCENT OF TOTAL PLAYS, RUN TYPE")
+    print("TEAM, YPC, ATTEMPTS RANK, TEAM, ATT, YARDS, PERCENT OF TOTAL PLAYS, RUN TYPE <br />")
     ypc_hash = {}
     for k, v in run_plays.items():
         great = []
@@ -104,13 +104,13 @@ def most_efficient_run_play_per_team():
     
     ypc_hash = dict(sorted(ypc_hash.items(), reverse=True, key=lambda item: item[1]))
     for k, v in ypc_hash.items():
-        print(f"{k} : {v}")
+        print(f"{k} : {v} <br />")
 
     
 
 def most_efficient_run_team():
     print("## Most efficient run team")
-    print("TEAM, YPC, ATT, YARDS")
+    print("TEAM, YPC, ATT, YARDS <br />")
     eff_hash = {}
     for k, v in run_plays.items():
         att = 0
@@ -125,7 +125,7 @@ def most_efficient_run_team():
     
     eff_hash = dict(sorted(eff_hash.items(), reverse=True, key=lambda item: item[1]))
     for k, v in eff_hash.items():
-        print(f"{k} : {v}")
+        print(f"{k} : {v} <br />")
         
     
 
